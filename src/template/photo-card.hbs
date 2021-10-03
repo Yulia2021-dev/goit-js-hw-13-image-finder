@@ -1,0 +1,28 @@
+{{#each this}}
+<div class="col">
+  <div class="card">
+    <div class="ratio ratio-4x3 card-img-top">
+      <img src={{webformatURL}} alt={{tags}} loading="lazy" />
+    </div>
+    
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <span class="material-icons align-middle">thumb_up</span>
+        <span class="mx-1 align-middle">{{likes}}</span>
+      </li>
+      <li class="list-group-item">
+        <span class="material-icons align-middle">visibility</span>
+        <span class="mx-1 align-middle">{{views}}</span>
+      </li>
+      <li class="list-group-item">
+        <span class="material-icons align-middle">comment</span> 
+        <span class="mx-1 align-middle">{{comments}}</span>
+      </li>
+      <li class="list-group-item">
+        <span class="material-icons align-middle">cloud_download</span>
+        <span class="mx-1 align-middle">{{downloads}}</span>
+      </li>
+    </ul>
+  </div>
+</div>
+{{/each}}
