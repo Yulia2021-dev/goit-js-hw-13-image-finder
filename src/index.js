@@ -3,6 +3,7 @@ import ApiService from './js/apiServise';
 import refs from './js/refs';
 import photoCard from './template/photo-card.hbs';
 import ButtonService from './js/button';
+import 'basiclightbox/dist/basicLightbox.min.css';
 import * as basicLightbox from 'basiclightbox';
 
 const { searchForm, imageGallery, loadMoreBtn, loadMoreBtnSpinner, loadMoreBtnLabel, images } =
@@ -49,8 +50,11 @@ const onLoadMoreBtn = event => {
 
 function appendLightBox(data, i) {
   const instance = basicLightbox.create(`
-      <img src="${data[i].webformatURL}" width="400" height="300">
-  `);
+    <img src="${data[i].webformatURL}" width="800" height="600">
+`);
+  //   const instance = basicLightbox.create(`
+  //       <img src="${data[i].webformatURL}" width="400" height="300">
+  //   `);
 
   instance.show();
 }
