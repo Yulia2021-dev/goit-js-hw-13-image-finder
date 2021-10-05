@@ -8,6 +8,7 @@ class ApiService {
     this.searchQuery = '';
     this.page = 1;
     this.perPage = 12;
+    this.totalResults = 0;
   }
 
   async fetchImg() {
@@ -17,6 +18,7 @@ class ApiService {
       );
 
       let data = await response?.data?.hits;
+      this.totalResults = response?.data?.total;
       this.incrementPage();
       return data;
     } catch (error) {
@@ -26,6 +28,10 @@ class ApiService {
 
   incrementPage() {
     this.page += 1;
+  }
+
+  getTotalResults() {
+    return this.totalResults;
   }
 
   resetPage() {

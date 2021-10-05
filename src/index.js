@@ -31,13 +31,18 @@ const onLoadMoreBtn = event => {
   imageApi.fetchImg().then(data => {
     imageGallery.insertAdjacentHTML('beforeend', photoCard(data));
     const imgList = imageGallery.querySelectorAll('img');
+    const offset = (imageApi.page - 2) * imageApi.perPage;
 
-    for (let i = 0; i < imgList.length; i++) {
-      imgList[i].onclick = () => appendLightBox(data, i);
+    for (let i = offset, j = 0; i < imgList.length; i++, j++) {
+      imgList[i].onclick = () => appendLightBox(data, j);
     }
 
-    button.show();
-    button.enable();
+    if (imageApi.getTotalResults() <= (imageApi.page - 1) * imageApi.perPage) {
+      button.hide();
+    } else {
+      button.show();
+      button.enable();
+    }
 
     const { height: cardHeight } = imageGallery.firstElementChild.getBoundingClientRect();
 
@@ -52,12 +57,13 @@ function appendLightBox(data, i) {
   const instance = basicLightbox.create(`
     <img src="${data[i].webformatURL}" width="800" height="600">
 `);
-  //   const instance = basicLightbox.create(`
-  //       <img src="${data[i].webformatURL}" width="400" height="300">
-  //   `);
 
   instance.show();
 }
+// const largeImagePath = event.target.dataset.large_img;
+// const instance = basicLightbox.create(`<img src="${largeImagePath}">`);
+
+// instance.show();
 
 const onSubmitSearchForm = event => {
   event.preventDefault();

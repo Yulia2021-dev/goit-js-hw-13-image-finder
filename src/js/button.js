@@ -22,6 +22,10 @@ export default class ButtonService {
     this.loadMoreBtn.classList.remove('d-none');
   }
 
+  hide() {
+    this.loadMoreBtn.classList.add('d-none');
+  }
+
   getClassList() {
     return this.classList;
   }
