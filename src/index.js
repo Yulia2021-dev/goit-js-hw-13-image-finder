@@ -18,7 +18,6 @@ const button = new ButtonService({
   classList: 'd-none',
 });
 
-console.log(images);
 // Delete all images in gallery
 function clearGallery() {
   imageGallery.innerHTML = '';
